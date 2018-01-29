@@ -1,24 +1,5 @@
-# README
+# blog-on-rails
+My first web-app made with Ruby on Rails framework
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The project was carried out according to the recommendations from this resource:
+http://codenamecrud.ru/basics-of-web-development/project-ruby-on-rails

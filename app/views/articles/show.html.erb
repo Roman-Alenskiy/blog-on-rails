@@ -1,4 +1,7 @@
 <h1>Title: <%= @article.title %></h1>
+<p><i>Created at <%= @article.created_at.strftime("%d-%m-%Y") %></i></p>
+<p><i>Last time updated at <%= @article.updated_at.strftime("%d-%m-%Y") %></i></p><br />
+
 <p><%= @article.body %></p><br />
 
 <%= link_to "EDIT", edit_article_path(@article) %><br />
@@ -7,4 +10,10 @@
 	method: :delete, 
 	data: {confirm: "Are u sure?"} %><br /><br />
 
+<h3>Post a Comment</h3>
+<%= render partial: "comments/form" %>
+	
 <%= link_to "<< Back to Articles List", articles_path %>
+
+<h3>Comments (<%= @article.comments.count %>)</h3>
+<%= render partial: "articles/comment", collection: @article.comments %>

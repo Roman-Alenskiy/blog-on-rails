@@ -1,0 +1,10 @@
+<h1>All Tags</h1>
+<table class = "tags-table">
+	<% @tags.each do |tag| %>
+		<tr>
+			<td><%= link_to tag.name, tag_path(tag) %></td>
+			<td id="delete-column"><%= link_to "DELETE", tag_path(tag), method: :delete, data: {confirm: "Are u sure?"} %></td>
+		</tr>
+	<% end %>
+</table><br />
+<%= link_to "<< Back to Articles List", articles_path %>

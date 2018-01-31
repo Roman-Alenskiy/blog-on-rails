@@ -13,14 +13,14 @@ include ArticlesHelper
 		@article.save
 		redirect_to article_path(@article)
 		
-		flash.notice = "Article created!"
+		flash.notice = "Article successfully created!"
 	end
 	
 	def destroy
 		@article = Article.find(params[:id]).destroy
 		redirect_to articles_path
 		
-		flash.notice = "Article deleted!"
+		flash.notice = "Article successfully deleted!"
 	end
 	
 	def edit
@@ -31,7 +31,7 @@ include ArticlesHelper
 		@article = Article.find(params[:id])
 		@article.update(article_params)
 		
-		flash.notice = "Article '#{@article.title}' updated!"
+		flash.notice = "Article '#{@article.title}' successfully updated!"
 		
 		redirect_to article_path(@article)
 	end

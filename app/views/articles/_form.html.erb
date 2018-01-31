@@ -16,6 +16,11 @@
 	</p>
 	
 	<p>
-		<%= f.submit "Post"%>
+		<%= f.label :tag_list %><br />
+		<%= f.text_field :tag_list %>
+	</p>
+	
+	<p>
+		<%= f.submit "Save"%>
 	</p>
 <% end %>

@@ -18,11 +18,10 @@
 
 <p><%= @article.body %></p><br />
 
-<%= link_to "EDIT", edit_article_path(@article) %><br />
-
-<%= link_to "DELETE", article_path(@article), 
-	method: :delete, 
-	data: {confirm: "Are u sure?"} %><br /><br />
+<% if logged_in? %>
+	<%= link_to "EDIT", edit_article_path(@article) %><br />
+	<%= link_to "DELETE", article_path(@article), method: :delete, data: {confirm: "Are u sure?"} %><br /><br />
+<% end %>
 
 <h3>Post a Comment</h3>
 	<%= render partial: "comments/form" %>

@@ -3,8 +3,11 @@
 	<% @tags.each do |tag| %>
 		<tr>
 			<td><%= link_to tag.name, tag_path(tag) %></td>
-			<td id="delete-column"><%= link_to "DELETE", tag_path(tag), method: :delete, data: {confirm: "Are u sure?"} %></td>
+			<% if logged_in? %>
+				<td id="delete-column"><%= link_to "DELETE", tag_path(tag), method: :delete, data: {confirm: "Are u sure?"} %></td>
+			<% end %>
 		</tr>
 	<% end %>
 </table><br />
+	
 <%= link_to "<< Back to Articles List", articles_path %>

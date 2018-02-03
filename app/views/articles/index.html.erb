@@ -1,6 +1,9 @@
 <h1>All Articles</h1><br />
 
 <p><i><%= link_to "See all tags", tags_path %></i></p><br />
+<% if logged_in? && current_user.is_admin %>
+	<p><i><%= link_to "See all Authors", authors_path %></i></p><br />
+<% end %>
 
 <ul id="articles">
 	<% @articles.each do |article| %>

@@ -3,7 +3,7 @@
 	<% @tags.each do |tag| %>
 		<tr>
 			<td><%= link_to tag.name, tag_path(tag) %></td>
-			<% if logged_in? %>
+			<% if logged_in? && current_user.is_admin %>
 				<td id="delete-column"><%= link_to "DELETE", tag_path(tag), method: :delete, data: {confirm: "Are u sure?"} %></td>
 			<% end %>
 		</tr>

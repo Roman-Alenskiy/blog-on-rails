@@ -5,8 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Username</th>
-      <th>Email</th>
+      <th>Username:</th>
+	  <% if logged_in? && current_user.is_admin %>
+		<th>Email:</th>
+	  <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,16 +17,19 @@
     <% @authors.each do |author| %>
       <tr>
         <td><%= author.username %></td>
-        <td><%= author.email %></td>
-        <td><%= link_to 'Show', author %></td>
-        <td><%= link_to 'Edit', edit_author_path(author) %></td>
-        <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if logged_in? && current_user.is_admin %>
+			<td><%= author.email %></td>
+			<td><%= link_to "Show", author %></td>
+			<td><%= link_to "Edit", edit_author_path(author) %></td>
+			<td><%= link_to "Destroy", author, method: :delete, data: { confirm: "Are you sure?" } %></td>
+		<% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Author', new_author_path %><br />
-<%= link_to 'Back to Articles', articles_path %>
+<% if logged_in? && current_user.is_admin %>
+	<%= link_to "New Author", new_author_path %><br />
+<% end %>
+<%= link_to "Back to Articles", articles_path %>

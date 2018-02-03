@@ -2,8 +2,19 @@ class AuthorsController < ApplicationController
 	before_action :set_author, only: [:show, :edit, :update, :destroy]
 	
 	before_action :require_login, except: [:new, :create]
+		
+	before_action :access_control_author, only: [:edit, :destroy]
 	
-
+	
+	def access_control_author
+		@author = Author.find(params[:id])
+		return if current_user.is_admin
+		if current_user.id != @author.id 	
+			flash.notice = "This is not your profile!"
+			redirect_to authors_path
+		end
+	end
+	
 	# GET /authors
 	# GET /authors.json
 	def index
@@ -28,6 +39,7 @@ class AuthorsController < ApplicationController
 	# POST /authors.json
 	def create
 		@author = Author.new(author_params)
+		@author.is_admin = false
 
 		respond_to do |format|
 			if @author.save

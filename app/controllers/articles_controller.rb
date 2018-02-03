@@ -2,11 +2,12 @@ class ArticlesController < ApplicationController
 include ArticlesHelper
 
 	before_action :require_login, except: [:show, :index]
-	before_action :access_control, only: [:edit, :destroy]
+	before_action :access_control_article, only: [:edit, :destroy]
 	
-	def access_control
+	def access_control_article
 		@article = Article.find(params[:id])
 		@author = current_user
+		return if current_user.is_admin
 		if @article.author_id != @author.id
 			redirect_to article_path(@article)
 			flash.notice = "You haven't access! This is not your article!"

@@ -3,13 +3,6 @@ class AuthorsController < ApplicationController
 	
 	before_action :require_login, except: [:new, :create]
 	
-	before_action :zero_authors_or_authenticated
-	def zero_authors_or_authenticated
-		unless Author.count == 0 || current_user
-			redirect_to root_path
-			return false
-		end
-	end
 
 	# GET /authors
 	# GET /authors.json

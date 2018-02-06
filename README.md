@@ -8,5 +8,4 @@ http://codenamecrud.ru/basics-of-web-development/project-ruby-on-rails
 Give the author administrator rights (in console): 
 ````ruby
 Author.find(id).update(is_admin: true)
-
-#Testing
+````

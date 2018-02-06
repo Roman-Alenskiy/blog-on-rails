@@ -16,7 +16,7 @@
 	</p>
 	
 	<p>
-		<%= f.label :tag_list %><br />
+		<%= f.label :tag_list, "Tags (example: tag1, tag2, tag3...)" %><br />
 		<%= f.text_field :tag_list %>
 	</p>
 	
@@ -30,6 +30,7 @@
 	</p>
 	
 	<p>
+		<%= link_to "Cancel", articles_path, data: {confirm: "Are u sure want to cancel?"} %><br />
 		<%= f.submit "Save"%>
 	</p>
 <% end %>

@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 include ArticlesHelper
 
-	before_action :require_login, except: [:show, :index]
+	before_action :require_login, except: [:show, :index, :new]
 	before_action :access_control_article, only: [:edit, :destroy]
 	
 	def access_control_article
@@ -19,7 +19,11 @@ include ArticlesHelper
 	end
 	
 	def new
-		@article = Article.new
+		if !logged_in? 
+			redirect_to login_path 
+		else
+			@article = Article.new
+		end
 	end
 	
 	def create

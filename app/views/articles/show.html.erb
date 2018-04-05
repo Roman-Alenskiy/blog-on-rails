@@ -18,7 +18,7 @@
 	<% end %>
 </p>
 
-<p><%= @article.body %></p><br />
+<p><%= raw @article.body %></p><br />
 
 <% if logged_in? && (current_user.is_admin || @article.author_id == @author.id) %>
 	<%= link_to "EDIT", edit_article_path(@article) %><br />
